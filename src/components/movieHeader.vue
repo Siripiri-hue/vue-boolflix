@@ -16,8 +16,6 @@ export default {
 
 <style lang="scss" scoped>
 
-@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
-
 header {
     position: fixed;
     height: 10vh;

@@ -2,35 +2,44 @@
     <main>
         <Search @search-film="fetchMovie" />
 
+        <!-- <h2>Movies</h2> -->
         <section id="movies-wrapper">
-            <Card v-for="movie in movies" :key="movie.id" :movie="movie" />
+            <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
+        </section>
+
+        <!-- <h2>Tv Show</h2> -->
+        <section id="series-wrapper">
+            <tvShow v-for="serie in series" :key="serie.id" :serie="serie" />
         </section>
     </main>
 </template>
 
 <script>
 import axios from "axios"
-import Card from './movieCard.vue'
+import Movie from './movieCard.vue'
 import Search from './searchMovie.vue'
+import tvShow from './seriesCard.vue'
 
 export default {
     components: {
-        Card,
         Search,
+        Movie,
+        tvShow,
     },
 
     data() {
         return {
             movies: [],
+            series: [],
         }
     },
 
     methods: {
-        fetchMovie: function(searchedMovie) {
+        fetchMovie: function(inputResearch) {
             axios.get(`https://api.themoviedb.org/3/search/movie/`, {
                 params: {
                     api_key: 'f511c6c384d66a3daf9eef04127c3c77',
-                    query: searchedMovie,
+                    query: inputResearch,
                     language: 'it-IT',
                 }
             })
@@ -43,6 +52,19 @@ export default {
                 this.movies = response.data.results;
                 console.log(this.movies);
             })
+
+            axios.get(`https://api.themoviedb.org/3/search/tv/`, {
+                params: {
+                    api_key: 'f511c6c384d66a3daf9eef04127c3c77',
+                    query: inputResearch,
+                    language: 'it-IT',
+                }
+            })
+            .then ( (response) => {
+                console.log(response.data);
+                this.series = response.data.results;
+                console.log(this.series);
+            })
         },
     },
 }
@@ -50,11 +72,17 @@ export default {
 
 <style lang="scss" scoped>
 main {
-    // height: 100vh;
+    height: 100vh;
     background-color: rgb(49, 49, 49);
     color: white;
     padding: 13vh 10px 50px;
     flex-grow: 1;
+    overflow: auto;
+
+    h2 {
+        font-family: 'Quintessential', cursive;
+        color: white;
+    }
 
     #search {
         position: fixed;
@@ -62,11 +90,20 @@ main {
         right: 25px;
     }
 
-    #movies-wrapper {
+    #movies-wrapper, #series-wrapper {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         justify-content: center;
+        // border: 1px solid lightgreen;
+    }
+
+    #movies-wrapper::after {
+        content: "";
+        display: block;
+        border-bottom: 2px solid lightgreen;
+        width: 50%;
+        margin: 40px 0;
     }
 }
 </style>
