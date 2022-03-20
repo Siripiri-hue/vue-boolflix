@@ -1,7 +1,8 @@
 <template>
     <div class="card">
         <figure>
-            <!-- <img :src="`https://themoviedb.org${movie.poster_path}`" alt=""> -->
+            <img v-if="(movie.poster_path == null)" src="../img/imagenotfound.jpg">
+            <img v-else :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`">
             <figcaption>
                 <p>Titolo: {{ movie.title }}</p>
                 <p>Titolo originale: {{ movie.original_title }}</p>
