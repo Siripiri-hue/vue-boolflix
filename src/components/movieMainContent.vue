@@ -1,20 +1,75 @@
 <template>
     <main>
-        <p>Speriamo che qui ce vadano i film</p>
+        <Search @search-film="fetchMovie" />
+
+        <section id="movies-wrapper">
+            <Card v-for="movie in movies" :key="movie.id" :movie="movie" />
+        </section>
     </main>
 </template>
 
 <script>
+import axios from "axios"
+import Card from './movieCard.vue'
+import Search from './searchMovie.vue'
+
 export default {
-    
+    components: {
+        Card,
+        Search,
+    },
+
+    data() {
+        return {
+            movies: [],
+            filterString: '',
+        }
+    },
+
+    methods: {
+        fetchMovie: function(searchedMovie) {
+            this.filterString = searchedMovie;
+
+            axios.get(`https://api.themoviedb.org/3/search/movie/`, {
+                params: {
+                    api_key: 'f511c6c384d66a3daf9eef04127c3c77',
+                    query: this.filterString,
+                    language: 'it-IT',
+                }
+            })
+            .then ( (response) => {
+                console.log(response.data);
+                // const title = response.data.title;
+                // const originalTitle = response.data.original_title;
+                // const language = response.data.original_language;
+                // const rating = response.data.vote_average;
+                this.movies = response.data.results;
+                console.log(this.movies);
+            })
+        },
+    },
 }
 </script>
 
 <style lang="scss" scoped>
 main {
-    height: 100vh;
+    // height: 100vh;
     background-color: rgb(49, 49, 49);
     color: white;
-    padding: 11vh 15px;
+    padding: 13vh 10px 50px;
+    flex-grow: 1;
+
+    #search {
+        position: fixed;
+        top: 20px;
+        right: 25px;
+    }
+
+    #movies-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
 }
 </style>

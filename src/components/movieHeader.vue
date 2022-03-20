@@ -1,54 +1,35 @@
 <template>
     <header>
         <h1>Boolflix</h1>
-
-        <div id="search">
-            <input type="text" placeholder="Type to search">
-            <button>Go</button>
-        </div>
     </header>
 </template>
 
 <script>
 export default {
-    
+    data() {
+        return {
+            searchedMovie: '',
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
 
 header {
-    font-family: 'Ma Shan Zheng', cursive;
-    color: #E6271F;
-    display: flex;
-    justify-content: space-around;
-    height: 10vh;
-    background-color: rgb(75, 75, 75);
-    font-size: 20px;
     position: fixed;
+    height: 10vh;
     width: 100%;
+
     padding: 15px 10px;
 
-    #search {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        
-        input {
-            border-radius: 10px;
-            padding: 5px;
-            border: none;
-        }
+    background-color: rgb(75, 75, 75);
 
-        button {
-            padding: 5px;
-            border: none;
-            border-radius: 10px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-    }
+    font-family: 'Ma Shan Zheng', cursive;
+    color: #E6271F;
+    font-size: 20px;
 }
 
 </style>
