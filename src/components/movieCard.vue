@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <figure>
-            <img :src="`https://api.themoviedb.org${movie.poster_path}`" alt="">
+            <!-- <img :src="`https://api.themoviedb.org${movie.poster_path}`" alt=""> -->
             <figcaption>
                 <p>Titolo: {{ movie.title }}</p>
                 <p>Titolo originale: {{ movie.original_title }}</p>

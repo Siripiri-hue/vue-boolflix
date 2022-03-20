@@ -22,18 +22,15 @@ export default {
     data() {
         return {
             movies: [],
-            filterString: '',
         }
     },
 
     methods: {
         fetchMovie: function(searchedMovie) {
-            this.filterString = searchedMovie;
-
             axios.get(`https://api.themoviedb.org/3/search/movie/`, {
                 params: {
                     api_key: 'f511c6c384d66a3daf9eef04127c3c77',
-                    query: this.filterString,
+                    query: searchedMovie,
                     language: 'it-IT',
                 }
             })

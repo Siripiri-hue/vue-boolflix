@@ -1,7 +1,8 @@
 <template>
     <div id="search">
-        <input type="text" placeholder="Type to search" v-model="searchedMovie">
-        <button @click="$emit('search-film', searchedMovie)">Go</button>
+        <input type="text" placeholder="Type to search" v-model="searchedMovie"
+        @keyup.enter="searchMovie()">
+        <button @click="searchMovie()">Go</button>
     </div>
 </template>
 
@@ -11,7 +12,14 @@ export default {
         return {
             searchedMovie: '',
         }
-    }
+    },
+
+    methods: {
+        searchMovie: function() {
+            this.$emit('search-film', this.searchedMovie);
+            this.searchedMovie = '';
+        },
+    },
     
 }
 </script>
