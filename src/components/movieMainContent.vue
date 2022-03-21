@@ -1,7 +1,7 @@
 <template>
     <main>
         <Search @search-film="fetchMovie" />
-
+        
         <!-- <h2>Movies</h2> -->
         <section id="movies-wrapper">
             <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
