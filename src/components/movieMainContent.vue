@@ -4,27 +4,30 @@
         
         <!-- <h2>Movies</h2> -->
         <section id="movies-wrapper">
-            <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
+            <!-- <Movie v-for="movie in movies" :key="movie.id" :movie="movie" /> -->
+            <Card v-for="show in movies" :key="show.id" :show="show" />
         </section>
 
         <!-- <h2>Tv Show</h2> -->
         <section id="series-wrapper">
-            <tvShow v-for="serie in series" :key="serie.id" :serie="serie" />
+            <Card v-for="show in series" :key="show.id" :show="show" />
         </section>
     </main>
 </template>
 
 <script>
 import axios from "axios"
-import Movie from './movieCard.vue'
 import Search from './searchMovie.vue'
-import tvShow from './seriesCard.vue'
+// import Movie from './movieCard.vue'
+// import tvShow from './seriesCard.vue'
+import Card from './cardShow.vue'
 
 export default {
     components: {
         Search,
-        Movie,
-        tvShow,
+        // Movie,
+        // tvShow,
+        Card,
     },
 
     data() {
