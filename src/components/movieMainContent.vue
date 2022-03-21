@@ -105,9 +105,9 @@ main {
 
     #movies-wrapper::after {
         content: "";
-        display: block;
-        border-bottom: 2px solid lightgreen;
-        width: 50%;
+        // display: block;
+        // border-bottom: 2px solid lightgreen;
+        // width: 50%;
         margin: 40px 0;
     }
 }
