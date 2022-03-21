@@ -6,12 +6,13 @@
             <figcaption> 
                 <!-- <p class="title">Titolo: {{ show.title }}</p> <p>Titolo: {{ serie.name }}</p> -->
                 <!-- <p class="title" v-if="(show.title) ? show.title : show.name "></p>  -->
-                <p class="title">Titolo: {{ show.title || show.name }}</p>
+                <p class="title">{{ show.title || show.name }}</p>
                 <!-- <p class="original-title">Titolo originale: {{ show.original_title }}</p> <p>Titolo originale: {{ serie.original_name }}</p> -->
                 <!-- <p class="original-title" v-if="(show.original_title) ? show.original_title : show.original_name "></p> -->
-                <p class="original-title"> Titolo originale: {{ show.original_title || show.original_name }}</p>
+                <p class="original-title"> ({{ show.original_title || show.original_name }})</p>
+                <p class="avg-vote"><font-awesome-icon v-for="i in 5" :key="i" :icon="(i < roundUpVotes) ? ' fa-star fa-solid' : 'fa-star fa-regular'" /></p>
                 <p class="original-lang">Lingua originale: {{ show.original_language }} <img class="flag" :src="flags[show.original_language]" alt=""></p>
-                <p class="avg-vote">Voto: <font-awesome-icon v-for="i in 5" :key="i" :icon="(i < roundUpVotes) ? ' fa-star fa-solid' : 'fa-star fa-regular'" /></p>
+                <!-- <p class="original-lang">Lingua originale: <country-flag country='show.original_language' /></p> -->
             </figcaption>
         </figure>
     </div>
@@ -50,24 +51,45 @@ export default {
 <style lang="scss" scoped>
 
 .card {
-    border: 1px solid lightcoral;
+    // border: 1px solid lightcoral;
     padding: 10px;
+    cursor: pointer;
 
     figure {
-        width: 200px;
+        width: 185px;
         position: relative;
 
         figcaption {
             display: none;
 
+            padding: 15px;
+            p {
+                margin-bottom: 25px;
+            }
+
+            .title {
+                font-size: 17px;
+            }
+
+            .original-title {
+                font-size: 10px;
+                font-style: italic;
+            }
+
+            .original-lang {
+                font-size: 12px;
+            }
+
             .flag {
                 width: 20px;
+            }
+
+            .avg-vote {
+                text-align: center;
             }
         }
 
         &:hover {
-            
-
             figcaption {
                 display: block;
                 position: absolute;
