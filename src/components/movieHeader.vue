@@ -20,6 +20,7 @@ header {
     position: fixed;
     height: 10vh;
     width: 100%;
+    z-index: 99;
 
     padding: 15px 10px;
 

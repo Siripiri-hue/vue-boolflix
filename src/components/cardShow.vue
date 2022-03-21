@@ -55,10 +55,27 @@ export default {
 
     figure {
         width: 200px;
+        position: relative;
 
         figcaption {
+            display: none;
+
             .flag {
                 width: 20px;
+            }
+        }
+
+        &:hover {
+            
+
+            figcaption {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba($color: #000000, $alpha: 0.6);
             }
         }
     }

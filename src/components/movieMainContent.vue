@@ -74,6 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 main {
     height: 100vh;
     background-color: rgb(49, 49, 49);
@@ -91,6 +92,7 @@ main {
         position: fixed;
         top: 20px;
         right: 25px;
+        z-index: 999;
     }
 
     #movies-wrapper, #series-wrapper {
